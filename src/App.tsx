@@ -46,15 +46,26 @@ const ScoreBox = ({
 
 const JokesList = ({ jokes, hasNoJokeResults }: { jokes: string[]; hasNoJokeResults: boolean }) => {
   return (
-    <div style={{ width: "50%" }}>
+    <div style={{ width: "50%", margin: "0 8px" }}>
       {jokes.length > 0 && <h3>Joke Results</h3>}
-      <ul>
+      <ul style={{ padding: "0" }}>
         {jokes.map((joke, i) => (
-          <li key={i}>{joke}</li>
+          <li
+            style={{
+              listStyleType: "none",
+              padding: "3px",
+              border: "1px solid rgba(0,0,150,.2)",
+              boxShadow: "5px 2px 2px rgba(0,0,150,.1)",
+              borderRadius: "3px",
+              margin: "8px 0",
+            }}
+            key={i}
+          >
+            {joke}
+          </li>
         ))}
       </ul>
-      {hasNoJokeResults &&
-        "Sorry, your search wasn't good enough, we're deducting a point from your score"}
+      {hasNoJokeResults && "Sorry, No jokes found, we're deducting a point from your score"}
     </div>
   );
 };
